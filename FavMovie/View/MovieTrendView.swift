@@ -13,48 +13,34 @@ struct MovieTrendView: View {
             VStack(alignment: .leading) {
                 Text("Today")
                     .font(.title)
-                    .bold()
+                    .fontWeight(.heavy)
+                    .shadow(color: .white, radius: 5)
                     .padding([.leading, .top])
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach (0..<10) { i in
-                            ZStack {
-                                Image("poster").resizable()
-                                    .background(Color.blue)
-                                    .frame(width: 200, height: 280)
-                            }
-                        }
-                    }
-                    .padding([.leading, .bottom])
+                    TrendScrollView()
                 }
             }
+            
             Spacer()
             Divider()
+                .background(.white)
             
             VStack(alignment: .leading) {
                 Text("Weeks")
                     .font(.title)
-                    .bold()
+                    .fontWeight(.heavy)
+                    .shadow(color: .white, radius: 5)
                     .padding([.leading])
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach (0..<10) { i in
-                            ZStack {
-                                Image("poster").resizable()
-                                    .background(Color.blue)
-                                    .frame(width: 200, height: 280)
-                                    .padding(.bottom)
-                            }
-                        }
-                    }
-                    .padding(.leading)
+                    TrendScrollView()
                 }
                 
             }
             Spacer()
         }
+        .background(Color("BaseColor"))
     }
 }
 
