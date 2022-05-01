@@ -11,7 +11,7 @@ import SwiftUI
 struct FavMovieApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
