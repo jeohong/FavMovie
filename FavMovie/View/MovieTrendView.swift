@@ -18,7 +18,12 @@ struct MovieTrendView: View {
                     .padding([.leading, .top])
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    TrendScrollView()
+                    HStack {
+                        ForEach (0..<20) { i in
+                            MovieInfoView()
+                        }
+                    }
+                    .padding([.bottom, .trailing])
                 }
             }
             
@@ -34,8 +39,12 @@ struct MovieTrendView: View {
                     .padding([.leading])
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    TrendScrollView()
-                }
+                    HStack {
+                        ForEach (0..<20) { i in
+                            MovieInfoView()
+                        }
+                    }
+                    .padding([.bottom, .trailing])                }
                 
             }
             Spacer()
