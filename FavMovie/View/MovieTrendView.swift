@@ -9,7 +9,52 @@ import SwiftUI
 
 struct MovieTrendView: View {
     var body: some View {
-        Text("영화 트랜드")
+        VStack {
+            VStack(alignment: .leading) {
+                Text("Today")
+                    .font(.title)
+                    .bold()
+                    .padding([.leading, .top])
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach (0..<10) { i in
+                            ZStack {
+                                Image("poster").resizable()
+                                    .background(Color.blue)
+                                    .frame(width: 200, height: 280)
+                            }
+                        }
+                    }
+                    .padding([.leading, .bottom])
+                }
+            }
+            Spacer()
+            Divider()
+            
+            VStack(alignment: .leading) {
+                Text("Weeks")
+                    .font(.title)
+                    .bold()
+                    .padding([.leading])
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach (0..<10) { i in
+                            ZStack {
+                                Image("poster").resizable()
+                                    .background(Color.blue)
+                                    .frame(width: 200, height: 280)
+                                    .padding(.bottom)
+                            }
+                        }
+                    }
+                    .padding(.leading)
+                }
+                
+            }
+            Spacer()
+        }
     }
 }
 
