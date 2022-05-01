@@ -15,6 +15,7 @@
 		A3467C52281E36EE00E75ED0 /* MovieTrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3467C51281E36EE00E75ED0 /* MovieTrendView.swift */; };
 		A3467C54281E371500E75ED0 /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3467C53281E371500E75ED0 /* WishListView.swift */; };
 		A36803D3281E8EA5004BAA40 /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36803D2281E8EA5004BAA40 /* MovieInfoView.swift */; };
+		A36803D5281EC6B1004BAA40 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36803D4281EC6B1004BAA40 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		A3467C51281E36EE00E75ED0 /* MovieTrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrendView.swift; sourceTree = "<group>"; };
 		A3467C53281E371500E75ED0 /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
 		A36803D2281E8EA5004BAA40 /* MovieInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
+		A36803D4281EC6B1004BAA40 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				A3467C40281E250500E75ED0 /* FavMovieApp.swift */,
+				A36803D4281EC6B1004BAA40 /* SearchBar.swift */,
 				A3467C42281E250500E75ED0 /* MainView.swift */,
 				A3467C50281E36D300E75ED0 /* View */,
 				A3467C44281E250600E75ED0 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36803D5281EC6B1004BAA40 /* SearchBar.swift in Sources */,
 				A3467C54281E371500E75ED0 /* WishListView.swift in Sources */,
 				A3467C4F281E36CD00E75ED0 /* MovieSearchView.swift in Sources */,
 				A3467C43281E250500E75ED0 /* MainView.swift in Sources */,

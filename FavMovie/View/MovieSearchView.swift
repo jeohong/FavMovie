@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct MovieSearchView: View {
+    @State var searchText = ""
     var body: some View {
-        Text("영화 검색")
+        VStack {
+            SearchBar(text: $searchText)
+            Spacer()
+        }
+        .background(Color("BaseColor"))
     }
 }
 
