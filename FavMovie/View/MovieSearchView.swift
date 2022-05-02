@@ -29,11 +29,14 @@ struct MovieSearchView: View {
                         }
                     }
                 }
+            } else if self.searchText.isEmpty{
+                Spacer()
+                ResultEmptyView()
+                Spacer()
             } else {
                 Spacer()
                 ResultEmptyNoSearchView()
                 Spacer()
-                
             }
         }
         .background(Color("BaseColor"))
