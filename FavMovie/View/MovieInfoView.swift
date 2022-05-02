@@ -15,7 +15,7 @@ struct MovieInfoView: View {
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(.white, lineWidth: 4))
-                .frame(width: 170, height: 270)
+                .frame(width: 170, height: 260)
                 .shadow(color: .blue, radius: 5)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
                 .overlay() {
