@@ -44,8 +44,8 @@ struct MovieTrendView: View {
                             MovieInfoView()
                         }
                     }
-                    .padding([.bottom, .trailing])                }
-                
+                    .padding([.bottom, .trailing])
+                }
             }
             Spacer()
         }
