@@ -17,7 +17,7 @@ struct MovieSearchView: View {
             
             // API 결과로 바꿀것
             if self.searchText == "닥터 스트레인지" {
-                ScrollView(showsIndicators: false) {
+                ScrollView(showsIndicators: true) {
                     LazyVGrid(columns: colums, spacing: 10) {
                         ForEach (0..<20) { i in
                             VStack{
