@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WishListView: View {
-    @State private var select = false
+    @Binding var select: Bool
     @State private var selectOrCancle = "선택"
     var colums = Array(repeating: GridItem(.adaptive(minimum: 180, maximum: 180)), count: 2)
     
@@ -28,6 +28,7 @@ struct WishListView: View {
                 Spacer()
                 Button(action:{
                     self.select.toggle()
+                    Global.tabBar!.isHidden.toggle()
                     if self.select { self.selectOrCancle = "취소" }
                     else { self.selectOrCancle = "선택" }
                 }) {
@@ -62,8 +63,18 @@ struct WishListView: View {
     }
 }
 
-struct WishListView_Previews: PreviewProvider {
-    static var previews: some View {
-        WishListView()
+struct Global {
+    static var tabBar : UITabBar?
+}
+extension UITabBar {
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        Global.tabBar = self
     }
 }
+
+//struct WishListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WishListView()
+//    }
+//}
