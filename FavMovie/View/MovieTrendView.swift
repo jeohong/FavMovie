@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieTrendView: View {
     @State private var todayTrend = [MovieInfo]()
-    var weeksTrend = [MovieInfo]()
+    @State private var weeksTrend = [MovieInfo]()
         
     var body: some View {
         VStack {
@@ -22,8 +22,8 @@ struct MovieTrendView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach (todayTrend) { i in
-                            MovieInfoView()
+                        ForEach (todayTrend) { movie in
+                            MovieInfoView(movie: movie)
                         }
                     }
                     .padding([.bottom, .trailing])
@@ -43,8 +43,8 @@ struct MovieTrendView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach (0..<20) { i in
-                            MovieInfoView()
+                        ForEach (weeksTrend) { movie in
+                            MovieInfoView(movie: movie)
                         }
                     }
                     .padding([.bottom, .trailing])
@@ -55,10 +55,12 @@ struct MovieTrendView: View {
         .background(Color("BaseColor"))
         .onAppear{
             DispatchQueue.global().async {
-                trendAPICall("week") { t in
+                trendAPICall("day") { t in
                     self.todayTrend = t
                 }
-//                trendAPICall("day")
+                trendAPICall("week") { t in
+                    self.weeksTrend = t
+                }
             }
         }
     }

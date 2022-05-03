@@ -9,64 +9,68 @@ import SwiftUI
 
 struct MovieInfoView: View {
     @State private var showDetails = false
+    let movie: MovieInfo
     
     var body: some View {
-            Image("poster2").resizable()
-                .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(.white, lineWidth: 4))
-                .frame(width: 170, height: 260)
-                .shadow(color: .blue, radius: 5)
-                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
-                .overlay() {
-                    VStack() {
-                        HStack() {
-                            Spacer()
-                            Button(action: {
-                                // 찜목록 저장 , 버튼 채워진걸로 바꾸기
-                                self.showDetails.toggle()
-                                print("\(self.showDetails)")
-                            }) {
-                                if !self.showDetails {
-                                    Image(systemName: "star")
-                                } else {
-                                    Image(systemName: "star.fill")
-                                        .foregroundColor(.blue)
-                                }
-                            }
-                            .padding([.top, .trailing])
-                        }
-                        
+        /*
+         URLImage(urlString: result.urlToImage)
+                                     .frame(width: 130, height: 70)
+                                     .background(Color.gray)
+         */
+        Image("poster2").resizable()
+            .cornerRadius(10)
+            .overlay(RoundedRectangle(cornerRadius: 10)
+                .stroke(.white, lineWidth: 4))
+            .frame(width: 170, height: 260)
+            .shadow(color: .blue, radius: 5)
+            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+            .overlay() {
+                VStack() {
+                    HStack() {
                         Spacer()
-                        
-                        HStack {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 30, height: 30)
-                                    .padding([.bottom, .leading])
-                                
-                                Text("7.5")
-                                    .foregroundColor(.white)
-                                    .padding([.bottom, .leading])
-                                
-                                Circle()
-                                    .trim(from: 0, to: 0.75)
-                                    .stroke(.green, lineWidth: 2)
-                                    .rotationEffect(.degrees(-90))
-                                    .frame(width: 30, height: 30)
-                                    .padding([.bottom, .leading])
+                        Button(action: {
+                            // 찜목록 저장 , 버튼 채워진걸로 바꾸기
+                            self.showDetails.toggle()
+                            print("\(self.showDetails)")
+                        }) {
+                            if !self.showDetails {
+                                Image(systemName: "star")
+                            } else {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.blue)
                             }
-                            Spacer()
                         }
+                        .padding([.top, .trailing])
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        ZStack {
+                            Circle()
+                                .frame(width: 30, height: 30)
+                                .padding([.bottom, .leading])
+                            
+                            Text(String(format: "%.1f", movie.rating!))
+                                .foregroundColor(.white)
+                                .padding([.bottom, .leading])
+                            
+                            Circle()
+                                .trim(from: 0, to: movie.rating! / 10)
+                                .stroke(movie.rating! > 6.9 ? .green : movie.rating! > 2.9 ? .yellow : .red, lineWidth: 2)
+                                .rotationEffect(.degrees(-90))
+                                .frame(width: 30, height: 30)
+                                .padding([.bottom, .leading])
+                        }
+                        Spacer()
                     }
                 }
-            
-        
+            }
     }
 }
 
-struct TrendScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieInfoView()
-    }
-}
+//struct TrendScrollView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieInfoView()
+//    }
+//}
