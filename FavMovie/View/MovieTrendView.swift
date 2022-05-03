@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MovieTrendView: View {
+    @State private var todayTrend = [MovieInfo]()
+    var weeksTrend = [MovieInfo]()
+        
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -19,7 +22,7 @@ struct MovieTrendView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach (0..<20) { i in
+                        ForEach (todayTrend) { i in
                             MovieInfoView()
                         }
                     }
@@ -50,7 +53,44 @@ struct MovieTrendView: View {
             Spacer()
         }
         .background(Color("BaseColor"))
+        .onAppear{
+            DispatchQueue.global().async {
+                trendAPICall("week") { t in
+                    self.todayTrend = t
+                }
+//                trendAPICall("day")
+            }
+        }
     }
+    
+}
+
+func trendAPICall(_ query: String, completion: @escaping ([MovieInfo]) -> Void) {
+    var trendUrl = URLComponents(string: "https://api.themoviedb.org/3/trending/movie/\(query)?")
+    
+    trendUrl?.queryItems?.append(apiKeyQuery)
+    trendUrl?.queryItems?.append(languageQuery)
+    
+    guard let requestTrendURL = trendUrl?.url else { return }
+    
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+    let dataTask = session.dataTask(with: requestTrendURL) { data, response, error in
+        guard error == nil else { return }
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+        guard let resultData = data else { return }
+        
+        do {
+            let decoder = JSONDecoder()
+            let respons =  try decoder.decode(Response.self, from: resultData)
+            let trend = respons.result
+            completion(trend)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+    }
+    dataTask.resume()
 }
 
 struct MovieTrandView_Previews: PreviewProvider {
