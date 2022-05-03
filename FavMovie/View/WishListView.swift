@@ -9,8 +9,6 @@ import SwiftUI
 
 struct WishListView: View {
     @Binding var select: Bool
-    @State private var selectOrCancle = "선택"
-    @State var uiTabarController: UITabBarController?
     
     var colums = Array(repeating: GridItem(.adaptive(minimum: 180, maximum: 180)), count: 2)
     
@@ -31,12 +29,16 @@ struct WishListView: View {
                 Button(action:{
                     self.select.toggle()
                     Global.tabBar!.isHidden.toggle()
-                    if self.select { self.selectOrCancle = "취소" }
-                    else { self.selectOrCancle = "선택" }
                 }) {
-                    Text("\(self.selectOrCancle)")
-                        .fontWeight(.heavy)
-                        .shadow(color: .blue, radius: 5)
+                    if self.select{
+                        Text("취소")
+                            .fontWeight(.heavy)
+                            .shadow(color: .blue, radius: 5)
+                    } else {
+                        Text("선택")
+                            .fontWeight(.heavy)
+                            .shadow(color: .blue, radius: 5)
+                    }
                 }
                 .padding(.trailing)
             }
