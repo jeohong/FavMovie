@@ -14,6 +14,7 @@ struct MovieSearchView: View {
     var body: some View {
         VStack {
             SearchBar(text: $searchText)
+                .padding(.top)
             
             // API 결과로 바꿀것
             if self.searchText == "닥터 스트레인지" {
