@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var select = false
-    @State var tabSelection = 1
+    @State private var select = false
+    @State private var tabSelection = 1
     
     init() {
         UIToolbar.appearance().barTintColor = UIColor(Color("BaseColor"))
