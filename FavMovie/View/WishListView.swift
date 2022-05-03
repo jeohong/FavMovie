@@ -10,6 +10,8 @@ import SwiftUI
 struct WishListView: View {
     @Binding var select: Bool
     @State private var selectOrCancle = "선택"
+    @State var uiTabarController: UITabBarController?
+    
     var colums = Array(repeating: GridItem(.adaptive(minimum: 180, maximum: 180)), count: 2)
     
     var body: some View {
@@ -66,6 +68,7 @@ struct WishListView: View {
 struct Global {
     static var tabBar : UITabBar?
 }
+
 extension UITabBar {
     override open func didMoveToSuperview() {
         super.didMoveToSuperview()
