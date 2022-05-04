@@ -12,11 +12,17 @@ struct MovieInfoView: View {
     let movie: MovieInfo
     
     var body: some View {
-        //        Image("poster2").resizable()
         AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original/\(movie.poster_path ?? "")")) { image in
-            image.resizable()
-        } placeholder: {
-            ProgressView()
+            switch image {
+            case .success(let image):
+                image.resizable()
+            case .failure(_):
+                Image("noPoster").resizable()
+            case .empty:
+                ProgressView()
+            @unknown default:
+                ProgressView()
+            }
         }
         .cornerRadius(10)
         .overlay(RoundedRectangle(cornerRadius: 10)
