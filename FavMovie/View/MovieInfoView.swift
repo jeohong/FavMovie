@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieInfoView: View {
     @State private var showDetails = false
+    @State private var isModal = false
     let movie: MovieInfo
     
     var body: some View {
@@ -25,6 +26,8 @@ struct MovieInfoView: View {
                     ProgressView()
                 }
             }
+            .onTapGesture { self.isModal.toggle() }
+            .sheet(isPresented: self.$isModal) { MovieModalView() }
             .cornerRadius(10)
             .overlay(RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 4))
