@@ -54,11 +54,14 @@ struct MovieModalView: View {
                 .shadow(color: .white, radius: 5)
                 .padding(.bottom)
             
-            Text("\(movieItem.summary! == "" ? "영화사에서 제공한 정보가 없습니다." : movieItem.summary!)")
-                .bold()
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .padding([.leading, .trailing])
+            ScrollView {
+                Text("\(movieItem.summary! == "" ? "영화사에서 제공한 정보가 없습니다." : movieItem.summary!)")
+                    .bold()
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding([.leading, .trailing])
+                Spacer()
+            }
             Spacer()
         }
         .background(Color("BaseColor"))
