@@ -15,6 +15,7 @@ struct MovieModalView: View {
             Text("\(movieItem.title!)")
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(.white)
                 .shadow(color: .white, radius: 6)
             
             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original/\(movieItem.poster_path ?? "")")) { image in
@@ -24,12 +25,13 @@ struct MovieModalView: View {
                 case .failure(_):
                     Image("noPoster").resizable()
                 case .empty:
-                    ProgressView()
+                    Text("불러오는중...")
+                        .foregroundColor(.gray)
                 @unknown default:
                     ProgressView()
                 }
             }
-            .frame(width: 200, height: 250, alignment: .center)
+            .frame(width: 200, height: 300, alignment: .center)
             Spacer()
             HStack {
                 Text("개봉 : \(movieItem.release_date ?? "미개봉")")
@@ -52,7 +54,7 @@ struct MovieModalView: View {
                 .shadow(color: .white, radius: 5)
                 .padding(.bottom)
             
-            Text("\(movieItem.summary ?? "영화사에서 제공한 정보가 없습니다.")")
+            Text("\(movieItem.summary! == "" ? "영화사에서 제공한 정보가 없습니다." : movieItem.summary!)")
                 .bold()
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
