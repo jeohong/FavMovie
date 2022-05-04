@@ -21,7 +21,9 @@ struct MovieInfoView: View {
                 case .failure(_):
                     Image("noPoster").resizable()
                 case .empty:
-                    ProgressView()
+                    Text("불러오는중...")
+                        .padding()
+                        .foregroundColor(.gray)
                 @unknown default:
                     ProgressView()
                 }
