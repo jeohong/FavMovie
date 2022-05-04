@@ -18,8 +18,10 @@ struct MovieSearchView: View {
             SearchBar(text: $searchText, isSubmit: $isSubmit)
                 .onSubmit {
                     self.isSubmit = true
-                    searchAPICall(self.searchText) { movie in
-                        self.searchMovie = movie
+                    DispatchQueue.global().async {
+                        searchAPICall(self.searchText) { movie in
+                            self.searchMovie = movie
+                        }
                     }
                 }
                 .padding(.top)
