@@ -27,7 +27,7 @@ struct MovieInfoView: View {
                 }
             }
             .onTapGesture { self.isModal.toggle() }
-            .sheet(isPresented: self.$isModal) { MovieModalView() }
+            .sheet(isPresented: self.$isModal) { MovieModalView(movieItem: movie) }
             .cornerRadius(10)
             .overlay(RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 4))

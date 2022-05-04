@@ -30,11 +30,13 @@ struct MovieInfo: Codable, Identifiable {
     let rating: Double?
     let summary: String?
     let poster_path: String?
+    let release_date: String?
     
     enum CodingKeys: String, CodingKey {
         case title
         case rating = "vote_average"
         case summary = "overview"
         case poster_path
+        case release_date
     }
 }
