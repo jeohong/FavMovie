@@ -49,6 +49,18 @@ struct MovieSearchView: View {
             }
         }
         .background(Color("BaseColor"))
+        .onTapGesture {
+            self.endEditing()
+        }
+    }
+    private func endEditing() {
+        UIApplication.shared.endEditing()
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
