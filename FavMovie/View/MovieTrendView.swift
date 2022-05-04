@@ -55,11 +55,11 @@ struct MovieTrendView: View {
         .background(Color("BaseColor"))
         .onAppear{
             DispatchQueue.global().async {
-                trendAPICall("day") { t in
-                    self.todayTrend = t
+                trendAPICall("day") { today in
+                    self.todayTrend = today
                 }
-                trendAPICall("week") { t in
-                    self.weeksTrend = t
+                trendAPICall("week") { weeks in
+                    self.weeksTrend = weeks
                 }
             }
         }
