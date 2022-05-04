@@ -77,6 +77,7 @@ struct MovieInfoView: View {
                 .bold()
                 .foregroundColor(.white)
                 .frame(width: 160)
+                .lineLimit(1)
         }
     }
 }

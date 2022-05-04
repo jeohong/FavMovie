@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
+    @Binding var isSubmit: Bool
     @State private var isEditing = false
+    
     var body: some View {
         HStack {
             TextField("영화 검색...", text: $text)
@@ -27,6 +29,7 @@ struct SearchBar: View {
                         if !text.isEmpty {
                             Button(action: {
                                 self.text = ""
+                                self.isSubmit = false
                             }, label: {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)
@@ -37,10 +40,15 @@ struct SearchBar: View {
                 ).onTapGesture {
                     self.isEditing = true
                 }
+                .onSubmit {
+                    self.isSubmit = true
+                    self.isEditing = false
+                }
             if isEditing {
                 Button(action: {
                     self.isEditing = false
                     self.text = ""
+                    self.isSubmit = false
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }) {
                     Text("취소")

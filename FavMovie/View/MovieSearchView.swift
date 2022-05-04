@@ -9,39 +9,76 @@ import SwiftUI
 
 struct MovieSearchView: View {
     var colums = Array(repeating: GridItem(.adaptive(minimum: 180, maximum: 180)), count: 2)
-    @State var searchText = ""
+    @State private var searchText = ""
+    @State private var isSubmit = false
+    @State private var searchMovie = [MovieInfo]()
     
     var body: some View {
         VStack {
-            SearchBar(text: $searchText)
+            SearchBar(text: $searchText, isSubmit: $isSubmit)
+                .onSubmit {
+                    self.isSubmit = true
+                    searchAPICall(self.searchText) { movie in
+                        self.searchMovie = movie
+                    }
+                }
                 .padding(.top)
             
-            // API 결과로 바꿀것
-            if self.searchText == "닥터 스트레인지" {
-                ScrollView(showsIndicators: true) {
-                    LazyVGrid(columns: colums, spacing: 10) {
-                        ForEach (0..<20) { i in
-                            VStack{
-                                MovieInfoView()
-                                // API 통신 결과로 바꿀것
-                                Text("닥터 스트레인지")
-                                    .foregroundColor(.white)
+            if self.isSubmit {
+                if self.searchMovie.isEmpty {
+                    Spacer()
+                    ResultEmptyNoSearchView()
+                    Spacer()
+                }else {
+                    ScrollView(showsIndicators: true) {
+                        LazyVGrid(columns: colums, spacing: 10) {
+                            ForEach (searchMovie) { i in
+                                VStack{
+                                    MovieInfoView(movie: i)
+                                }
                             }
                         }
                     }
                 }
-            } else if self.searchText.isEmpty{
-                Spacer()
-                ResultEmptyView()
-                Spacer()
             } else {
                 Spacer()
-                ResultEmptyNoSearchView()
+                ResultEmptyView()
                 Spacer()
             }
         }
         .background(Color("BaseColor"))
     }
+}
+
+func searchAPICall(_ query: String, completion: @escaping ([MovieInfo]) -> Void) {
+    var searchUrl = URLComponents(string: "https://api.themoviedb.org/3/search/movie?")
+    
+    let searchQuery = URLQueryItem(name: "query", value: query)
+    
+    searchUrl?.queryItems?.append(apiKeyQuery)
+    searchUrl?.queryItems?.append(languageQuery)
+    searchUrl?.queryItems?.append(searchQuery)
+    
+    guard let requestTrendURL = searchUrl?.url else { return }
+    
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+    let dataTask = session.dataTask(with: requestTrendURL) { data, response, error in
+        guard error == nil else { return }
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+        guard let resultData = data else { return }
+        
+        do {
+            let decoder = JSONDecoder()
+            let respons =  try decoder.decode(Response.self, from: resultData)
+            let search = respons.result
+            completion(search)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+    }
+    dataTask.resume()
 }
 
 struct MovieSearchView_Previews: PreviewProvider {
