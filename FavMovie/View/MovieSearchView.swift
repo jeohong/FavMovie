@@ -11,6 +11,7 @@ struct MovieSearchView: View {
     var colums = Array(repeating: GridItem(.adaptive(minimum: 180, maximum: 180)), count: 2)
     @State private var searchText = ""
     @State private var isSubmit = false
+    @State private var isLoading = false
     @State private var searchMovie = [MovieInfo]()
     
     var body: some View {
@@ -18,34 +19,41 @@ struct MovieSearchView: View {
             SearchBar(text: $searchText, isSubmit: $isSubmit)
                 .onSubmit {
                     self.isSubmit = true
-                    DispatchQueue.global().async {
+                    DispatchQueue.global().sync {
+                        self.isLoading = true
                         searchAPICall(self.searchText) { movie in
                             self.searchMovie = movie
+                            self.isLoading = false
                         }
                     }
                 }
                 .padding(.top)
             
-            if self.isSubmit {
-                if self.searchMovie.isEmpty {
-                    Spacer()
-                    ResultEmptyNoSearchView()
-                    Spacer()
-                }else {
-                    ScrollView(showsIndicators: true) {
-                        LazyVGrid(columns: colums, spacing: 10) {
-                            ForEach (searchMovie) { i in
-                                VStack{
-                                    MovieInfoView(movie: i)
+            if self.isLoading {
+                Spacer()
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                Spacer()
+            } else {
+                if self.isSubmit {
+                    if self.searchMovie.isEmpty {
+                        Spacer()
+                        ResultEmptyNoSearchView()
+                        Spacer()
+                    } else {
+                        ScrollView(showsIndicators: true) {
+                            LazyVGrid(columns: colums, spacing: 10) {
+                                ForEach (searchMovie) { movie in
+                                    MovieInfoView(movie: movie)
                                 }
                             }
                         }
                     }
+                } else {
+                    Spacer()
+                    ResultEmptyView()
+                    Spacer()
                 }
-            } else {
-                Spacer()
-                ResultEmptyView()
-                Spacer()
             }
         }
         .background(Color("BaseColor"))
