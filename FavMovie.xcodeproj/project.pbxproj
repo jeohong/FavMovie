@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A300661328234E87008C52A9 /* MovieModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A300661228234E87008C52A9 /* MovieModalView.swift */; };
+		A32EFB38282508F600E79177 /* MovieModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EFB37282508F600E79177 /* MovieModalView.swift */; };
 		A3467C41281E250500E75ED0 /* FavMovieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3467C40281E250500E75ED0 /* FavMovieApp.swift */; };
 		A3467C43281E250500E75ED0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3467C42281E250500E75ED0 /* MainView.swift */; };
 		A3467C45281E250600E75ED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3467C44281E250600E75ED0 /* Assets.xcassets */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A300661228234E87008C52A9 /* MovieModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieModalView.swift; path = ../../../../../MovieModalView.swift; sourceTree = "<group>"; };
+		A32EFB37282508F600E79177 /* MovieModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModalView.swift; sourceTree = "<group>"; };
 		A3467C3D281E250500E75ED0 /* FavMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3467C40281E250500E75ED0 /* FavMovieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavMovieApp.swift; sourceTree = "<group>"; };
 		A3467C42281E250500E75ED0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 				A3467C53281E371500E75ED0 /* WishListView.swift */,
 				A36803D2281E8EA5004BAA40 /* MovieInfoView.swift */,
 				A3B8E45A281FAD78002CB5D0 /* ResultEmptyView.swift */,
-				A300661228234E87008C52A9 /* MovieModalView.swift */,
+				A32EFB37282508F600E79177 /* MovieModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 				A36803D3281E8EA5004BAA40 /* MovieInfoView.swift in Sources */,
 				A3467C41281E250500E75ED0 /* FavMovieApp.swift in Sources */,
 				A3467C52281E36EE00E75ED0 /* MovieTrendView.swift in Sources */,
-				A300661328234E87008C52A9 /* MovieModalView.swift in Sources */,
+				A32EFB38282508F600E79177 /* MovieModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
