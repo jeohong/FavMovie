@@ -34,7 +34,7 @@ struct MovieModalView: View {
             .frame(width: 200, height: 300, alignment: .center)
             Spacer()
             HStack {
-                Text("개봉 : \(movieItem.release_date ?? "미개봉")")
+                Text("개봉 : \(movieItem.release_date!.isEmpty ? "미개봉" : movieItem.release_date!)")
                     .bold()
                     .foregroundColor(.white)
                     .shadow(color: .white, radius: 5)
@@ -55,7 +55,7 @@ struct MovieModalView: View {
                 .padding(.bottom)
             
             ScrollView {
-                Text("\(movieItem.summary! == "" ? "영화사에서 제공한 정보가 없습니다." : movieItem.summary!)")
+                Text("\(movieItem.summary!.isEmpty ? "영화사에서 제공한 정보가 없습니다." : movieItem.summary!)")
                     .bold()
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
