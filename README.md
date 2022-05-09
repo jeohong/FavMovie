@@ -26,8 +26,8 @@
 
 ## :fireworks: Screenshots
 
-![App Screenshot](Image/인기 순위 화면.PNG) ![App Screenshot](Image/영화 상세 모달화면.PNG) ![App Screenshot](Image/영화 검색 화면.PNG)
-![App Screenshot](Image/검색결과 없음.PNG) ![App Screenshot](Image/검색 완료 화면.PNG) ![App Screenshot](Image/로딩 화면.PNG)
+![App Screenshot](Image/trendView.PNG) ![App Screenshot](Image/modalView.PNG) ![App Screenshot](Image/movieSearch.PNG)
+![App Screenshot](Image/notFound.png) ![App Screenshot](Image/searchFinish.png) ![App Screenshot](Image/loading.PNG)
 
 
 ## :sparkles: Skills & Tech Stack & Environment
