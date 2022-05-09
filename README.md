@@ -27,7 +27,7 @@
 ## :fireworks: Screenshots
 
 ![App Screenshot](Image/trendView.png) ![App Screenshot](Image/modalView.png) ![App Screenshot](Image/movieSearch.png)
-![App Screenshot](Image/notFound.png) ![App Screenshot](Image/searchFinish.png) ![App Screenshot](Image/loading.png)
+![App Screenshot](Image/notFound.png) ![App Screenshot](Image/searchFinish.png) ![App Screenshot](Image/loadingAPI.png)
 
 
 ## :sparkles: Skills & Tech Stack & Environment
